@@ -1,0 +1,76 @@
+.header {
+  padding-top: 30px;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-image: url("../../images/bgTop.png");
+  background-size: 100% 100%;
+}
+.header-in {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 92%;
+}
+.header-inner {
+  cursor: pointer;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+.header-inner h1 {
+  font-weight: 500;
+  font-size: 35px;
+}
+.header-inner .MuiSvgIcon-root {
+  font-size: 30px !important;
+}
+.notification .MuiSvgIcon-root {
+  color: #fff;
+  font-size: 35px;
+}
+.filter-outer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media only screen and (max-width: 650px) {
+  .header {
+    padding-top: 20px;
+    padding-bottom: 0;
+    background-color: #ff7070;
+    background-image: none;
+  }
+  .header-inner h1 {
+    font-size: 26px;
+  }
+  .notification .MuiSvgIcon-root {
+    font-size: 28px;
+  }
+  .header-inner .MuiSvgIcon-root {
+    font-size: 26px !important;
+  }
+  .header-in {
+    margin-bottom: 15px;
+  }
+  .filter-search {
+    margin: 10px 0;
+    width: 96%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 5px;
+  }
+  .filter-search .MuiSvgIcon-root {
+    background: #ffffff54;
+    border: 1px solid #fff;
+    padding: 10px;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 28px;
+    margin-left: 5px;
+  }
+}
