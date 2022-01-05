@@ -60,3 +60,17 @@
     overflow-y: scroll;
   }
 }
+@media only screen and (max-width: 957px){
+  .home_panel-wrap{
+    background: #fff;
+    border: none;
+    margin-top: 140px;
+    width: 60%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+  .modal{
+    width: 100%;
+    overflow-y: scroll;
+  }
+}

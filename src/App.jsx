@@ -1,13 +1,7 @@
 import React from "react";
 import Home from "./pages/Home";
 import "./App.css";
-import Accord from "./Accord";
 
-const App = () => (
-  <>
-    <Home />
-    {/* <Accord/> */}
-  </>
-);
+const App = () => <Home />;
 
 export default App;
