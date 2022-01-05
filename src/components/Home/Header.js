@@ -4,7 +4,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import "./Header.css";
 import SearchBar from "./SearchBar";
-function Header({ isSelect,handleOpen}) {
+function Header({ isSelect,handleOpen,value,change}) {
   return (
     <div className="header">
       <div className="header-in">
@@ -17,7 +17,7 @@ function Header({ isSelect,handleOpen}) {
         </div>
       </div>
       {!isSelect ? <div className="filter-search">
-        <SearchBar />
+        <SearchBar value={value} change={change} />
         <FilterListIcon onClick={handleOpen} />
       </div> : ""}
 

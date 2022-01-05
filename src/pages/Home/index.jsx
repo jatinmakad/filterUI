@@ -46,7 +46,7 @@ const Home = () => {
     return () => {
       window.removeEventListener("resize", update);
     };
-  }, []);
+  }, [windowWidth]);
   const update = () => {
     setWindowWidth(window.innerWidth);
     setOpen(false);
@@ -149,11 +149,16 @@ const Home = () => {
 
   useEffect(() => {
     applyFilters();
-  },[searchInput]);
+  }, [searchInput]);
 
   return (
     <div className="home">
-      <Header isSelect={isSelect} handleOpen={handleOpen} />
+      <Header
+        isSelect={isSelect}
+        value={searchInput}
+        change={setSearchInput}
+        handleOpen={handleOpen}
+      />
       {isMobile === false ? (
         isSelect ? (
           <FilterListIcon onClick={handleOpen} className="filterIcon" />
@@ -167,10 +172,7 @@ const Home = () => {
         {/* List & Empty View */}
         <div className="home_list-wrap">
           {isSelect ? (
-            <SearchBar
-              value={searchInput}
-              changeInput={(e) => setSearchInput(e.target.value)}
-            />
+            <SearchBar value={searchInput} change={setSearchInput} />
           ) : (
             ""
           )}
