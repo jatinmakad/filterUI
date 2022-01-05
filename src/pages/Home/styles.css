@@ -22,6 +22,7 @@
 .home_panel-wrap {
   border-left: 1px solid black;
   flex-basis: 280px;
+  overflow-y: scroll;
   background: #ECECEC;
   padding: 1rem;
   width: 300px;

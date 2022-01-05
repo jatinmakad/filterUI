@@ -149,7 +149,7 @@ const Home = () => {
 
   useEffect(() => {
     applyFilters();
-  }, [searchInput]);
+  },[searchInput]);
 
   return (
     <div className="home">
