@@ -18,12 +18,13 @@ import Select from "@material-ui/core/Select";
 import "./listStyle.css";
 import TimeLine from "../../components/Home/TimeLine/TimeLine";
 import Ratings from "../../components/common/Ratings";
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
 })(({ theme, expand }) => ({
-  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
+  // transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
   marginLeft: "auto",
   transition: theme.transitions.create("transform", {
     duration: theme.transitions.duration.shortest,
@@ -42,19 +43,23 @@ const data = [
 ];
 function ListMain({ list, isSelect, isMobile }) {
   const [age, setAge] = useState("");
-  const [de, setDe] = useState("");
+  const [collapse, setCollapse] = useState("");
   const handleChange = (event) => {
     setAge(event.target.value);
   };
   const [expanded, setExpanded] = useState(false);
   const handleExpandClick = (value) => {
     setExpanded(!expanded);
-    setDe(value);
+    if (collapse === value) {
+      setCollapse("");
+    } else {
+      setCollapse(value);
+    }
   };
   return (
     <Box className="box">
       <Grid container spacing={2} style={{ flexGrow: 1 }}>
-        {list.map((_data) => {
+        {list.map((_data, index) => {
           return (
             <Grid item xs={12} md={12} lg={6}>
               <Card key={_data.id} style={{ borderRadius: "20px" }}>
@@ -119,7 +124,7 @@ function ListMain({ list, isSelect, isMobile }) {
                 </div>
 
                 <Collapse
-                  in={isMobile === true ? true : expanded}
+                  in={isMobile === true ? true : index === collapse}
                   timeout="auto"
                   unmountOnExit
                 >

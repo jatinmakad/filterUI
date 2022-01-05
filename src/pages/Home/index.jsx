@@ -174,7 +174,6 @@ const Home = () => {
           ) : (
             ""
           )}
-
           {resultsFound ? (
             <ListMain isSelect={isSelect} isMobile={isMobile} list={list} />
           ) : (

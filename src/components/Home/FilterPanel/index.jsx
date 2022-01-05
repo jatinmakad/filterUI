@@ -82,6 +82,7 @@ const FilterPanel = ({
       <button
         onClick={() => {
           applyFilters();
+          handleClose();
         }}
         className="apply-btn"
       >
@@ -91,7 +92,7 @@ const FilterPanel = ({
         className="clear-btn"
         onClick={() => {
           clearFilter();
-          // handleClose();
+          handleClose();
         }}
       >
         Clear

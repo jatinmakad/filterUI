@@ -15,7 +15,7 @@ export const timeList = [
 ];
 export const dataList = [
   {
-    id: 1,
+    id: 0,
     title: 'Product1',
     rating: 5,
     price: 2500,
@@ -26,7 +26,7 @@ export const dataList = [
     mentored:10,
   },
   {
-    id: 2,
+    id: 1,
     title: 'Product2',
     rating: 4,
     price: 1000,
@@ -37,7 +37,7 @@ export const dataList = [
     mentored:10,
   },
   {
-    id: 3,
+    id: 2,
     title: 'Product3',
     rating: 3,
     price: 2000,
@@ -48,7 +48,7 @@ export const dataList = [
     mentored:10,
   },
   {
-    id: 4,
+    id: 3,
     title: 'Product4',
     rating: 1,
     price: 1800,
@@ -59,7 +59,7 @@ export const dataList = [
      mentored:10,
   },
   {
-    id: 5,
+    id: 4,
     title: 'Product5',
     rating: 5,
     price: 2000,
@@ -70,7 +70,7 @@ export const dataList = [
     mentored:10,
   },
   {
-    id: 6,
+    id: 5,
     title: 'Product6',
     rating: 5,
     price: 3500,
@@ -81,7 +81,7 @@ export const dataList = [
     mentored:10,
   },
   {
-    id: 7,
+    id: 6,
     title: 'Product7',
     rating: 2,
     price: 2200,
@@ -92,7 +92,7 @@ export const dataList = [
     mentored:10,
   },
   {
-    id: 8,
+    id: 7,
     title: 'Product8',
     rating: 1,
     price: 1900,
@@ -103,7 +103,7 @@ export const dataList = [
     mentored:10,
   },
   {
-    id: 9,
+    id: 8,
     title: 'Product9',
     rating: 4,
     price: 2750,
@@ -114,7 +114,7 @@ export const dataList = [
     mentored:10,
   },
   {
-    id: 10,
+    id: 9,
     title: 'Product10',
     rating: 2,
     price: 4350,
@@ -125,7 +125,7 @@ export const dataList = [
     mentored:10,
   },
   {
-    id: 11,
+    id: 10,
     title: 'Product11',
     rating: 3,
     price: 3300,
@@ -136,7 +136,7 @@ export const dataList = [
     mentored:10,
   },
   {
-    id: 12,
+    id: 11,
     title: 'Product12',
     rating: 2,
     price: 4100,
