@@ -51,7 +51,7 @@
     background: #fff;
     border: none;
     margin-top: 140px;
-    width: 90%;
+    width: 90% !important;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
   }
