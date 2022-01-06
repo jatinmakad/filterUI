@@ -13,7 +13,6 @@ const TimeLine = () => {
         display: "flex",
         justifyContent: "flex-start",
         alignItems: "flex-start",
-        marginBottom: "10px",
       }}
     >
       <Timeline style={{ padding: "0" }} className="timeline">
@@ -24,23 +23,23 @@ const TimeLine = () => {
             <TimelineConnector />
           </TimelineSeparator>
           <TimelineContent>
-            <span style={{ fontWeight: "800", fontSize: "14px" }}>
+            <p style={{ fontWeight: "800", fontSize: "13px" }}>
               Ceo at microsoft ( 2016 - 2018)
-            </span>
-            <p style={{ fontSize: "13px" }}>Working on different dom...</p>
+            </p>
+            <p style={{ fontSize: "12px" }}>Working on different dom...</p>
           </TimelineContent>
         </TimelineItem>
         <TimelineItem>
           <TimelineSeparator>
             <TimelineDot style={{ background: "#FF7070" }} />
-            <TimelineConnector />
+            {/* <TimelineConnector /> */}
           </TimelineSeparator>
           <TimelineContent>
-            <span style={{ fontWeight: "800", fontSize: "14px" }}>
+            <p style={{ fontWeight: "800", fontSize: "13px" }}>
               {" "}
               Director- at Microsoft
-            </span>
-            <p style={{ fontSize: "13px" }}>Workedd</p>
+            </p>
+            <p style={{ fontSize: "12px" }}>Workedd</p>
           </TimelineContent>
         </TimelineItem>
       </Timeline>

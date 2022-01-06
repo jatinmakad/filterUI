@@ -10,12 +10,12 @@ import Grid from "@material-ui/core/Grid";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
+import NativeSelect from "@material-ui/core/NativeSelect";
 import "./listStyle.css";
 import TimeLine from "../../components/Home/TimeLine/TimeLine";
 import Ratings from "../../components/common/Ratings";
 import ExpandActions from "../../components/common/ExpandActions";
-
+import Select from "@material-ui/core/Select";
 const data = [
   {
     time: "15 Mins",
@@ -24,13 +24,13 @@ const data = [
     time: "30 Mins",
   },
   {
-    time: "45 Mins",
+    time: "60 Mins",
   },
 ];
 function ListMain({ list, isSelect, isMobile }) {
-  const [age, setAge] = useState("");
+  const [age, setAge] = useState("60 Mins");
   const [collapse, setCollapse] = useState("");
-  const handleChange = (event) => {
+  const handleChange = (event, index) => {
     setAge(event.target.value);
   };
   const [expanded, setExpanded] = useState(false);
@@ -62,7 +62,7 @@ function ListMain({ list, isSelect, isMobile }) {
                     title={<h1 className="card-title">{_data.title}</h1>}
                     subheader={
                       <p className="card-subheader">
-                        Enterprenuer | CEO {isSelect ? <Ratings /> : ""}
+                        Enterprenuer | CEO <Ratings />
                       </p>
                     }
                   />
@@ -76,13 +76,12 @@ function ListMain({ list, isSelect, isMobile }) {
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
                         value={age}
-                        label="Age"
-                        onChange={handleChange}
+                        onChange={(e) => handleChange(e, index)}
                       >
-                        {data.map((s) => {
+                        {_data.time.map((item) => {
                           return (
-                            <MenuItem value={s.time} key={s.time}>
-                              {s.time}
+                            <MenuItem key={item} value={item}>
+                              {item}
                             </MenuItem>
                           );
                         })}
@@ -114,16 +113,7 @@ function ListMain({ list, isSelect, isMobile }) {
                   <CardContent className="card-content">
                     <div style={{ marginBottom: "10px" }}>
                       <h1 className="card-content-h1">Domain</h1>
-                      <span
-                        style={{
-                          fontWeight: "600",
-                          marginLeft: "5px",
-                          fontSize: "20px",
-                          textTransform: "capitalize",
-                        }}
-                      >
-                        {_data.domain}
-                      </span>
+                      <span>{_data.domain}</span>
                     </div>
 
                     <h1 className="card-content-h1">Experience</h1>
@@ -135,7 +125,7 @@ function ListMain({ list, isSelect, isMobile }) {
                         <span style={{ color: "black" }}>{_data.mentored}</span>
                       </h1>
                     </div>
-                    {!isSelect ? (
+                    {/* {!isSelect ? (
                       <div style={{ marginBottom: "10px" }}>
                         <h1 className="card-content-h1">
                           Rating
@@ -144,7 +134,7 @@ function ListMain({ list, isSelect, isMobile }) {
                       </div>
                     ) : (
                       ""
-                    )}
+                    )} */}
 
                     <button className="view-profile">View Full Profile</button>
                   </CardContent>

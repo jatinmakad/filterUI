@@ -9,11 +9,12 @@ import "./styles.css";
 import Collapse from "@material-ui/core/Collapse";
 import Modal from "@material-ui/core/Modal";
 import Header from "../../components/Home/Header";
+import Slide from "@material-ui/core/Slide";
 
 const Home = () => {
   const [selectedTime, setSelectedTime] = useState(null);
   const [searchInput, setSearchInput] = useState("");
-  const [domain, setDomain] = useState("");
+  const [domain, setDomain] = useState(null);
   const [industry, setIndustry] = useState("");
   const [selectedPrice, setSelectedPrice] = useState([1000, 5000]);
   const [selectedRating, setSelectedRating] = useState([1, 5]);
@@ -23,11 +24,16 @@ const Home = () => {
   const [resultsFound, setResultsFound] = useState(true);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
+  const [checked, setChecked] = useState(false);
+  const handleChange = () => {
+    setChecked((prev) => !prev);
+  };
+  const handleOpen = () => {
+    setOpen(true);
+  };
   const handleClose = () => {
     setOpen(false);
   };
-
   let isMobile = false;
   if (windowWidth <= 957) {
     isMobile = false;
@@ -67,26 +73,27 @@ const Home = () => {
   const handleChangeMentored = (event, value) => {
     setSelectedMentored(value);
   };
-  const handleDomainChange = (event) => {
-    setDomain(event.target.value);
+  const handleDomainChange = (value) => {
+    setDomain(value);
   };
-  const handleIndustryChange = (event) => {
-    setIndustry(event.target.value);
+  const handleIndustryChange = (value) => {
+    setIndustry(value);
   };
   const clearFilter = () => {
     setSelectedExperience([1, 10]);
     setSelectedMentored([1, 10]);
     setSelectedPrice([1000, 5000]);
     setSelectedRating([1, 5]);
-    setIndustry("");
-    setDomain("");
+    setIndustry(null);
+    setDomain(null);
     setSelectedTime(null);
     setList(dataList);
     setResultsFound(true);
   };
   const applyFilters = () => {
     let updatedList = dataList;
-
+    let industryValue;
+    let domainValue;
     // Search Filter
     if (searchInput) {
       updatedList = updatedList.filter(
@@ -98,18 +105,25 @@ const Home = () => {
 
     // Time Filter
     if (selectedTime) {
-      updatedList = updatedList.filter(
-        (item) => parseInt(item.time) === parseInt(selectedTime)
+      updatedList = updatedList.filter((item) =>
+        item.time.includes(selectedTime)
       );
     }
     // Domain Filter
     if (domain) {
-      updatedList = updatedList.filter((item) => item.domain === domain);
+      domainValue = domain.map((s) => s.label);
+      updatedList = updatedList.filter((item) =>
+        domainValue.includes(item.domain)
+      );
     }
     // Industry Filter
     if (industry) {
-      updatedList = updatedList.filter((item) => item.industry === industry);
+      industryValue = industry.map((s) => s.label);
+      updatedList = updatedList.filter((item) =>
+        industryValue.includes(item.industry)
+      );
     }
+
     // Rating Filter
     const minRating = selectedRating[0];
     const maxRating = selectedRating[1];
@@ -158,10 +172,17 @@ const Home = () => {
         value={searchInput}
         change={setSearchInput}
         handleOpen={handleOpen}
+        changeHand={handleChange}
       />
       {isMobile === false ? (
         isSelect ? (
-          <FilterListIcon onClick={handleOpen} className="filterIcon" />
+          <FilterListIcon
+            onClick={() => {
+              handleOpen();
+              handleChange();
+            }}
+            className="filterIcon"
+          />
         ) : (
           ""
         )
@@ -190,6 +211,7 @@ const Home = () => {
         >
           <div className="home_panel-wrap">
             <FilterPanel
+              changeHand={handleChange}
               selectedTime={selectedTime}
               selectedPrice={selectedPrice}
               selectedExperience={selectedExperience}
@@ -210,35 +232,40 @@ const Home = () => {
             />
           </div>
         </Collapse>
-
         <Modal
           open={open}
-          onClose={handleClose}
+          onClose={() => {
+            handleClose();
+            handleChange();
+          }}
           className="modal"
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <div className="home_panel-wrap second-pannel">
-            <FilterPanel
-              selectedTime={selectedTime}
-              selectedPrice={selectedPrice}
-              selectedExperience={selectedExperience}
-              selectedRating={selectedRating}
-              selectedMentored={selectedMentored}
-              domain={domain}
-              industry={industry}
-              selectIndustry={handleIndustryChange}
-              selectDomain={handleDomainChange}
-              selectTime={handleSelectTime}
-              changePrice={handleChangePrice}
-              changeRating={handleChangeRating}
-              changeExperience={handleChangeExperience}
-              changeMentored={handleChangeMentored}
-              applyFilters={applyFilters}
-              clearFilter={clearFilter}
-              handleClose={handleClose}
-            />
-          </div>
+          <Slide direction="up" in={checked} mountOnEnter unmountOnExit>
+            <div className="home_panel-wrap second-pannel">
+              <FilterPanel
+                changeHand={handleChange}
+                selectedTime={selectedTime}
+                selectedPrice={selectedPrice}
+                selectedExperience={selectedExperience}
+                selectedRating={selectedRating}
+                selectedMentored={selectedMentored}
+                domain={domain}
+                industry={industry}
+                selectIndustry={handleIndustryChange}
+                selectDomain={handleDomainChange}
+                selectTime={handleSelectTime}
+                changePrice={handleChangePrice}
+                changeRating={handleChangeRating}
+                changeExperience={handleChangeExperience}
+                changeMentored={handleChangeMentored}
+                applyFilters={applyFilters}
+                clearFilter={clearFilter}
+                handleClose={handleClose}
+              />
+            </div>
+          </Slide>
         </Modal>
       </div>
     </div>

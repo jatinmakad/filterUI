@@ -1,10 +1,12 @@
 import React from "react";
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import FilterListIcon from '@material-ui/icons/FilterList';
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import NotificationsIcon from "@material-ui/icons/Notifications";
+import FilterListIcon from "@material-ui/icons/FilterList";
 import "./Header.css";
 import SearchBar from "./SearchBar";
-function Header({ isSelect,handleOpen,value,change}) {
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+
+function Header({ isSelect, handleOpen, value, change, changeHand }) {
   return (
     <div className="header">
       <div className="header-in">
@@ -16,11 +18,19 @@ function Header({ isSelect,handleOpen,value,change}) {
           <NotificationsIcon />
         </div>
       </div>
-      {!isSelect ? <div className="filter-search">
-        <SearchBar value={value} change={change} />
-        <FilterListIcon onClick={handleOpen} />
-      </div> : ""}
-
+      {!isSelect ? (
+        <div className="filter-search">
+          <SearchBar value={value} change={change} />
+          <FilterListIcon
+            onClick={() => {
+              handleOpen();
+              changeHand();
+            }}
+          />
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

@@ -11,6 +11,10 @@
   font-size: 15px;
   font-weight: 700;
 }
+.card-subheader {
+  font-size: 12px;
+  font-weight: 600;
+}
 .card-content {
   display: flex;
   align-items: flex-start;
@@ -22,24 +26,30 @@
   border-radius: 10px;
   width: auto;
 }
+.card-content span{
+  font-weight: 600;
+  margin-left: 5px;
+  font-size: 15px;
+  text-transform: capitalize;
+}
 .card-content-h1 {
   color: #ff7070;
   font-weight: 700;
-  font-size: 23px;
+  font-size: 18px;
 }
 .view-profile {
   width: 100%;
   background-color: #ff7070;
   border: none;
-  font-size: 18px;
+  font-size: 16px;
   color: #fff;
   border-radius: 8px;
-  padding: 10px 0;
+  padding: 8px 0;
   font-weight: lighter;
   cursor: pointer;
 }
 .card-title {
-  font-size: 20px;
+  font-size: 18px;
 }
 .card-avatar {
   width: 55px;

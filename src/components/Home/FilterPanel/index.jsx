@@ -30,75 +30,91 @@ const FilterPanel = ({
   clearFilter,
   handleClose,
   isMobile,
-}) => (
-  <div className="filter-main">
-    <div
-      className="filter-outer"
-      style={{ width: "100%", marginBottom: "1.5rem" }}
-    >
-      <p className="filter-outer">
-        <FilterListIcon style={{ marginRight: "5px" }} />
-        <h3 style={{ fontWeight: "700" }}>Filters</h3>
-      </p>
-      <ClearIcon onClick={handleClose} />
-    </div>
-    <div className="input-group">
-      <p className="label-range">Filter by Ratings</p>
-      <SliderProton value={selectedRating} changePrice={changeRating} />
-    </div>
-    <div className="input-group">
-      <p className="label-range">Industry</p>
-      <DropIndustry value={industry} changesValue={selectIndustry} />
-    </div>
-    <div className="input-group">
-      <p className="label-range">Domain</p>
-      <DropDown value={domain} changesValue={selectDomain} />
-    </div>
+  changeHand,
+}) => {
+  const applyFunc = () => {
+    handleClose();
+    applyFilters();
+    changeHand();
+  };
+  const clearFunc = () => {
+    handleClose();
+    clearFilter();
+    changeHand();
+  };
+  return (
+    <div className="filter-main">
+      <div
+        className="filter-outer"
+        style={{ width: "100%", marginBottom: "1.5rem" }}
+      >
+        <p className="filter-outer">
+          <FilterListIcon style={{ marginRight: "5px" }} />
+          <h3 style={{ fontWeight: "700" }}>Filters</h3>
+        </p>
+        {!isMobile ? (
+          <ClearIcon
+            onClick={() => {
+              handleClose();
+              changeHand();
+            }}
+          />
+        ) : (
+          ""
+        )}
+      </div>
+      <div className="input-group">
+        <p className="label-range">Filter by Ratings</p>
+        <SliderProton value={selectedRating} changePrice={changeRating} />
+      </div>
+      <div className="input-group">
+        <p className="label-range">Industry</p>
+        <DropIndustry value={industry} changesValue={selectIndustry} />
+      </div>
+      <div className="input-group">
+        <p className="label-range">Domain</p>
+        <DropDown value={domain} changesValue={selectDomain} />
+      </div>
 
-    <div className="input-group">
-      <p className="label">Time</p>
-      <FilterListToggle
-        options={timeList}
-        value={selectedTime}
-        selectToggle={selectTime}
-      />
+      <div className="input-group">
+        <p className="label-range">Time</p>
+        <FilterListToggle
+          options={timeList}
+          value={selectedTime}
+          selectToggle={selectTime}
+        />
+      </div>
+      <div className="input-group">
+        <p className="label-range">Price</p>
+        <SliderPrice value={selectedPrice} changePrice={changePrice} />
+      </div>
+      <div className="input-group">
+        <p className="label-range">Experience</p>
+        <SliderExperiance
+          value={selectedExperience}
+          changePrice={changeExperience}
+        />
+      </div>
+      <div className="input-group">
+        <p className="label-range">Mentees Mentored</p>
+        <SliderMentor value={selectedMentored} changePrice={changeMentored} />
+      </div>
+      <div className="apply-outer">
+        <button
+          onClick={() => (!isMobile ? applyFunc() : applyFilters())}
+          className="apply-btn"
+        >
+          Apply
+        </button>
+        <button
+          className="clear-btn"
+          onClick={() => (!isMobile ? clearFunc() : clearFilter())}
+        >
+          Clear
+        </button>
+      </div>
     </div>
-    <div className="input-group">
-      <p className="label-range">Price</p>
-      <SliderPrice value={selectedPrice} changePrice={changePrice} />
-    </div>
-    <div className="input-group">
-      <p className="label-range">Experience</p>
-      <SliderExperiance
-        value={selectedExperience}
-        changePrice={changeExperience}
-      />
-    </div>
-    <div className="input-group">
-      <p className="label-range">Mentees Mentored</p>
-      <SliderMentor value={selectedMentored} changePrice={changeMentored} />
-    </div>
-    <div className="apply-outer">
-      <button
-        onClick={() => {
-          applyFilters();
-          handleClose();
-        }}
-        className="apply-btn"
-      >
-        Apply
-      </button>
-      <button
-        className="clear-btn"
-        onClick={() => {
-          clearFilter();
-          handleClose();
-        }}
-      >
-        Clear
-      </button>
-    </div>
-  </div>
-);
+  );
+};
 
 export default FilterPanel;

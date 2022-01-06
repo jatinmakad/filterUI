@@ -1,25 +1,33 @@
-import React from "react"
-import { Box, FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
-
-function DropIndustry({ value, changesValue }) {
+import React from "react";
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import { makeStyles } from "@material-ui/core/styles";
+import { InputBase } from "@material-ui/core";
+const useStyles = makeStyles({
+  root: {
+    paddingTop: "5px",
+  },
+});
+function DropIndustry({ changesValue, value }) {
+  const classes = useStyles();
+  
   return (
-    <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth>
-        {!value ? <InputLabel id="demo-simple-select-label">Industry</InputLabel> : ""}
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={value}
-          label="Industry"
-          onChange={changesValue}
-        >
-          <MenuItem value="startup">Startup</MenuItem>
-          <MenuItem value="it">I.T</MenuItem>
-          <MenuItem value="bio-medical">Bio - Medical</MenuItem>
-          <MenuItem value="computerScience">Computer Science</MenuItem>
-        </Select>
-      </FormControl>
-    </Box>
+    <Autocomplete
+      multiple
+      id="size-small-outlined-multi"
+      size="small"
+      options={data}
+      getOptionLabel={(option) => option.label}
+      onChange={(event, value) => changesValue(value)}
+      renderInput={(params) => <TextField {...params} placeholder="Industry" />}
+    />
   );
 }
-export default DropIndustry
+const data = [
+  { label: "IT" },
+  { label: "Startup" },
+  { label: "Bio-Medical" },
+  { label: "Computer Science" },
+];
+
+export default DropIndustry;

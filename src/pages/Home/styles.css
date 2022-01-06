@@ -50,7 +50,6 @@
   .home_panel-wrap{
     background: #fff;
     border: none;
-    margin-top: 140px;
     width: 90% !important;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -64,13 +63,13 @@
   .home_panel-wrap{
     background: #fff;
     border: none;
-    margin-top: 140px;
     width: 60%;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
   }
   .modal{
     width: 100%;
+    padding-top: 140px;
     overflow-y: scroll;
   }
 }

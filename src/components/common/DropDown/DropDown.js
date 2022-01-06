@@ -1,24 +1,26 @@
-import React from "react"
-import { Box, FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
+import React from 'react';
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
-function DropDown({ value, changesValue }) {
+function DropDown({changesValue}) {
   return (
-    <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth >
-        {!value ? <InputLabel id="demo-simple-select-label">Domain</InputLabel> : ""}
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={value}
-          label="Domain"
-          onChange={changesValue}
-        >
-          <MenuItem value="marketing">Marketing</MenuItem>
-          <MenuItem value="sales">Sales</MenuItem>
-          <MenuItem value="digitalMarketing">Digital Marketing</MenuItem>
-        </Select>
-      </FormControl>
-    </Box>
+    <Autocomplete
+    multiple
+    id="size-small-outlined-multi"
+    size="small"
+    options={data}
+    getOptionLabel={(option) => option.label}
+    onChange={(event, value) => changesValue(value)} 
+    renderInput={(params) => (
+      <TextField {...params} placeholder="Domain" />
+    )}
+  />
   );
 }
+const data = [
+  { label: 'Marketing'},
+  { label: 'Sales' },
+  { label: 'Digital Marketing'},
+];
+
 export default DropDown
