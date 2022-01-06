@@ -18,7 +18,8 @@ const useStyles = makeStyles({
   },
   thumb: {
     color: "#FF7070",
-    // border: "3px solid #FF7070",
+    background: "#fff",
+    border: "1px solid #FF7070",
   },
   rail: {
     color: `#FCB5B5`,

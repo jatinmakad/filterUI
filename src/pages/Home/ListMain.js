@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Card from "@material-ui/core/Card";
-import { styled } from "@material-ui/core/styles";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
-import IconButton from "@material-ui/core/IconButton";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Avatar } from "@material-ui/core";
 import Icon from "../../images/Avatar.png";
 import Box from "@material-ui/core/Box";
@@ -18,18 +14,8 @@ import Select from "@material-ui/core/Select";
 import "./listStyle.css";
 import TimeLine from "../../components/Home/TimeLine/TimeLine";
 import Ratings from "../../components/common/Ratings";
-import ExpandLessIcon from "@material-ui/icons/ExpandLess";
+import ExpandActions from "../../components/common/ExpandActions";
 
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  // transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-  marginLeft: "auto",
-  transition: theme.transitions.create("transform", {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
 const data = [
   {
     time: "15 Mins",
@@ -108,16 +94,13 @@ function ListMain({ list, isSelect, isMobile }) {
 
                   <p className="card-price">INR {_data.price}/hour</p>
                   {isMobile === false ? (
-                    <CardActions style={{ padding: "0" }}>
-                      <ExpandMore
-                        expand={expanded}
-                        onClick={() => handleExpandClick(_data.id)}
-                        aria-expanded={expanded}
-                        aria-label="show more"
-                      >
-                        <ExpandMoreIcon />
-                      </ExpandMore>
-                    </CardActions>
+                    <ExpandActions
+                      expanded={expanded}
+                      collapse={collapse}
+                      id={_data.id}
+                      handleExpandClick={handleExpandClick}
+                      index={index}
+                    />
                   ) : (
                     ""
                   )}
@@ -133,9 +116,9 @@ function ListMain({ list, isSelect, isMobile }) {
                       <h1 className="card-content-h1">Domain</h1>
                       <span
                         style={{
-                          fontWeight: "500",
+                          fontWeight: "600",
                           marginLeft: "5px",
-                          fontSize: "18px",
+                          fontSize: "20px",
                           textTransform: "capitalize",
                         }}
                       >
