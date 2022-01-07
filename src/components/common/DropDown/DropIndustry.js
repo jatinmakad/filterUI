@@ -1,25 +1,31 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import { makeStyles } from "@material-ui/core/styles";
-import { InputBase } from "@material-ui/core";
-const useStyles = makeStyles({
-  root: {
-    paddingTop: "5px",
-  },
-});
-function DropIndustry({ changesValue, value }) {
-  const classes = useStyles();
-  
+import { withStyles } from "@material-ui/core/styles";
+
+const CustomAutocomplete = withStyles({
+  tag: {
+    backgroundColor: "#FFD5CD5C",
+       fontWeight:600,
+       fontSize:"14px",
+    "& .MuiChip-label": {
+      color: "#FF7070"
+    },
+    "& .MuiChip-deleteIcon": {
+      color: "#FF7070"
+    },
+  }
+})(Autocomplete);
+function DropIndustry({ changesValue}) {
   return (
-    <Autocomplete
+    <CustomAutocomplete
       multiple
-      id="size-small-outlined-multi"
-      size="small"
-      options={data}
+      id="size-medium-outlined-multi"
+      size="medium"
+      options={data} 
       getOptionLabel={(option) => option.label}
       onChange={(event, value) => changesValue(value)}
-      renderInput={(params) => <TextField {...params} placeholder="Industry" />}
+      renderInput={(params,selected) => <TextField {...params} placeholder="Industry" />}
     />
   );
 }

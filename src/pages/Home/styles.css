@@ -50,13 +50,15 @@
   .home_panel-wrap{
     background: #fff;
     border: none;
+    height: 80% !important;
     width: 90% !important;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
   }
   .modal{
     width: 100%;
-    overflow-y: scroll;
+    height: 100%;
+   overflow: scroll;
   }
 }
 @media only screen and (max-width: 957px){
@@ -64,12 +66,15 @@
     background: #fff;
     border: none;
     width: 60%;
+    margin-top: 140px;
+    height: 80%;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
   }
   .modal{
     width: 100%;
-    padding-top: 140px;
-    overflow-y: scroll;
+    height: 100%;
+
+    overflow: scroll;
   }
 }

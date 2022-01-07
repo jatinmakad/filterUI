@@ -15,7 +15,7 @@ const Home = () => {
   const [selectedTime, setSelectedTime] = useState(null);
   const [searchInput, setSearchInput] = useState("");
   const [domain, setDomain] = useState(null);
-  const [industry, setIndustry] = useState("");
+  const [industry, setIndustry] = useState(null);
   const [selectedPrice, setSelectedPrice] = useState([1000, 5000]);
   const [selectedRating, setSelectedRating] = useState([1, 5]);
   const [selectedExperience, setSelectedExperience] = useState([1, 10]);
@@ -28,6 +28,7 @@ const Home = () => {
   const handleChange = () => {
     setChecked((prev) => !prev);
   };
+  console.log(industry,"========")
   const handleOpen = () => {
     setOpen(true);
   };
@@ -142,7 +143,9 @@ const Home = () => {
     );
     setList(updatedList);
     !updatedList.length ? setResultsFound(false) : setResultsFound(true);
+
     // Mentored Filter
+
     const minMenotred = selectedMentored[0];
     const maxMentored = selectedMentored[1];
     updatedList = updatedList.filter(
@@ -242,7 +245,7 @@ const Home = () => {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <Slide direction="up" in={checked} mountOnEnter unmountOnExit>
+          <Slide direction="up" in={checked} timeout={400} mountOnEnter unmountOnExit>
             <div className="home_panel-wrap second-pannel">
               <FilterPanel
                 changeHand={handleChange}

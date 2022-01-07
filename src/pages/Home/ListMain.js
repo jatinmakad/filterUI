@@ -10,28 +10,17 @@ import Grid from "@material-ui/core/Grid";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
-import NativeSelect from "@material-ui/core/NativeSelect";
 import "./listStyle.css";
 import TimeLine from "../../components/Home/TimeLine/TimeLine";
 import Ratings from "../../components/common/Ratings";
 import ExpandActions from "../../components/common/ExpandActions";
 import Select from "@material-ui/core/Select";
-const data = [
-  {
-    time: "15 Mins",
-  },
-  {
-    time: "30 Mins",
-  },
-  {
-    time: "60 Mins",
-  },
-];
 function ListMain({ list, isSelect, isMobile }) {
   const [age, setAge] = useState("60 Mins");
-  const [collapse, setCollapse] = useState("");
+  const [collapse, setCollapse] = useState(0);
   const handleChange = (event, index) => {
     setAge(event.target.value);
+    console.log(index)
   };
   const [expanded, setExpanded] = useState(false);
   const handleExpandClick = (value) => {
@@ -59,7 +48,7 @@ function ListMain({ list, isSelect, isMobile }) {
                         aria-label="recipe"
                       />
                     }
-                    title={<h1 className="card-title">{_data.title}</h1>}
+                    title={<h1 className="card-title" key={_data.title}>{_data.title}</h1>}
                     subheader={
                       <p className="card-subheader">
                         Enterprenuer | CEO <Ratings />
@@ -91,13 +80,13 @@ function ListMain({ list, isSelect, isMobile }) {
                     ""
                   )}
 
-                  <p className="card-price">INR {_data.price}/hour</p>
+                  <p className="card-price" key={_data.price}>INR {_data.price}/hour</p>
                   {isMobile === false ? (
                     <ExpandActions
                       expanded={expanded}
                       collapse={collapse}
                       id={_data.id}
-                      handleExpandClick={handleExpandClick}
+                      handleExpandClick={() => handleExpandClick(index)}
                       index={index}
                     />
                   ) : (
@@ -113,7 +102,7 @@ function ListMain({ list, isSelect, isMobile }) {
                   <CardContent className="card-content">
                     <div style={{ marginBottom: "10px" }}>
                       <h1 className="card-content-h1">Domain</h1>
-                      <span>{_data.domain}</span>
+                      <span key={_data.domain}>{_data.domain}</span>
                     </div>
 
                     <h1 className="card-content-h1">Experience</h1>
@@ -122,7 +111,7 @@ function ListMain({ list, isSelect, isMobile }) {
                     <div style={{ marginBottom: "10px" }}>
                       <h1 className="card-content-h1">
                         Mentees Mentored :{" "}
-                        <span style={{ color: "black" }}>{_data.mentored}</span>
+                        <span style={{ color: "black" }} key={_data.mentored}>{_data.mentored}</span>
                       </h1>
                     </div>
                     {/* {!isSelect ? (
