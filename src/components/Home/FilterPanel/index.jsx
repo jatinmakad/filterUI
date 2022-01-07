@@ -13,6 +13,7 @@ import "./styles.css";
 
 const FilterPanel = ({
   selectedTime,
+  industryData,
   selectedPrice,
   selectedRating,
   selectedMentored,
@@ -31,6 +32,8 @@ const FilterPanel = ({
   handleClose,
   isMobile,
   changeHand,
+  setInputIndustry,
+  inputIndusrty
 }) => {
   const applyFunc = () => {
     handleClose();
@@ -48,10 +51,10 @@ const FilterPanel = ({
         className="filter-outer"
         style={{ width: "100%", marginBottom: "1.5rem" }}
       >
-        <p className="filter-outer">
+        <div className="filter-outer">
           <FilterListIcon style={{ marginRight: "5px" }} />
           <h3 style={{ fontWeight: "700" }}>Filters</h3>
-        </p>
+        </div>
         {!isMobile ? (
           <ClearIcon
             onClick={() => {
@@ -69,7 +72,7 @@ const FilterPanel = ({
       </div>
       <div className="input-group">
         <p className="label-range">Industry</p>
-        <DropIndustry value={industry} changesValue={selectIndustry} />
+        <DropIndustry industryData={industryData} values={industry} changesValue={selectIndustry} />
       </div>
       <div className="input-group">
         <p className="label-range">Domain</p>

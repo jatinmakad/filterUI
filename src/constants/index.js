@@ -22,7 +22,7 @@ export const dataList = [
     time: ["15 Mins","30 Mins","60 Mins"],
     experience: 4,
     domain: "Digital Marketing",
-    industry: "startup",
+    industry: "Startup",
     mentored: 10,
   },
   {

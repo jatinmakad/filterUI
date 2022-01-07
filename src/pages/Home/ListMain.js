@@ -20,7 +20,6 @@ function ListMain({ list, isSelect, isMobile }) {
   const [collapse, setCollapse] = useState(0);
   const handleChange = (event, index) => {
     setAge(event.target.value);
-    console.log(index)
   };
   const [expanded, setExpanded] = useState(false);
   const handleExpandClick = (value) => {
@@ -50,9 +49,9 @@ function ListMain({ list, isSelect, isMobile }) {
                     }
                     title={<h1 className="card-title" key={_data.title}>{_data.title}</h1>}
                     subheader={
-                      <p className="card-subheader">
+                      <div className="card-subheader">
                         Enterprenuer | CEO <Ratings />
-                      </p>
+                      </div>
                     }
                   />
 
@@ -63,8 +62,8 @@ function ListMain({ list, isSelect, isMobile }) {
                       </InputLabel>
                       <Select
                         labelId="demo-simple-select-label"
-                        id="demo-simple-select"
                         value={age}
+                        id={_data.id}
                         onChange={(e) => handleChange(e, index)}
                       >
                         {_data.time.map((item) => {
@@ -114,17 +113,6 @@ function ListMain({ list, isSelect, isMobile }) {
                         <span style={{ color: "black" }} key={_data.mentored}>{_data.mentored}</span>
                       </h1>
                     </div>
-                    {/* {!isSelect ? (
-                      <div style={{ marginBottom: "10px" }}>
-                        <h1 className="card-content-h1">
-                          Rating
-                          <Ratings />
-                        </h1>
-                      </div>
-                    ) : (
-                      ""
-                    )} */}
-
                     <button className="view-profile">View Full Profile</button>
                   </CardContent>
                 </Collapse>

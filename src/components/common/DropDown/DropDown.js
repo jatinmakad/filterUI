@@ -15,15 +15,18 @@ const CustomAutocomplete = withStyles({
     },
   },
 })(Autocomplete);
-function DropDown({ changesValue }) {
+
+
+function DropDown({ changesValue,value }) {
   return (
     <CustomAutocomplete
       multiple
       id="size-medium-outlined-multi"
       size="medium"
       options={data}
+      value={value}
       getOptionLabel={(option) => option.label}
-      onChange={(event, value) => changesValue(value)}
+      onChange={changesValue}
       renderInput={(params) => <TextField {...params} placeholder="Domain" />}
     />
   );

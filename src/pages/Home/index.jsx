@@ -11,11 +11,17 @@ import Modal from "@material-ui/core/Modal";
 import Header from "../../components/Home/Header";
 import Slide from "@material-ui/core/Slide";
 
+const industryData = [
+  { label: "IT" },
+  { label: "Startup" },
+  { label: "Bio-Medical" },
+  { label: "Computer Science" },
+];
 const Home = () => {
   const [selectedTime, setSelectedTime] = useState(null);
   const [searchInput, setSearchInput] = useState("");
-  const [domain, setDomain] = useState(null);
-  const [industry, setIndustry] = useState(null);
+  const [domain, setDomain] = useState([]);
+  const [industry, setIndustry] = useState([]);
   const [selectedPrice, setSelectedPrice] = useState([1000, 5000]);
   const [selectedRating, setSelectedRating] = useState([1, 5]);
   const [selectedExperience, setSelectedExperience] = useState([1, 10]);
@@ -28,7 +34,6 @@ const Home = () => {
   const handleChange = () => {
     setChecked((prev) => !prev);
   };
-  console.log(industry,"========")
   const handleOpen = () => {
     setOpen(true);
   };
@@ -74,19 +79,17 @@ const Home = () => {
   const handleChangeMentored = (event, value) => {
     setSelectedMentored(value);
   };
-  const handleDomainChange = (value) => {
+  const handleDomainChange = (_,value) => {
     setDomain(value);
   };
-  const handleIndustryChange = (value) => {
-    setIndustry(value);
-  };
+  const handleIndustryChange = (_,value) => setIndustry(value);
   const clearFilter = () => {
     setSelectedExperience([1, 10]);
     setSelectedMentored([1, 10]);
     setSelectedPrice([1000, 5000]);
     setSelectedRating([1, 5]);
-    setIndustry(null);
-    setDomain(null);
+    setIndustry([]);
+    setDomain([]);
     setSelectedTime(null);
     setList(dataList);
     setResultsFound(true);
@@ -111,20 +114,19 @@ const Home = () => {
       );
     }
     // Domain Filter
-    if (domain) {
+    if (domain.length) {
       domainValue = domain.map((s) => s.label);
       updatedList = updatedList.filter((item) =>
         domainValue.includes(item.domain)
       );
     }
     // Industry Filter
-    if (industry) {
+    if (industry.length){
       industryValue = industry.map((s) => s.label);
       updatedList = updatedList.filter((item) =>
         industryValue.includes(item.industry)
       );
     }
-
     // Rating Filter
     const minRating = selectedRating[0];
     const maxRating = selectedRating[1];
@@ -207,13 +209,10 @@ const Home = () => {
           )}
         </div>
         {/* Filter Panel */}
-        <Collapse
-          in={isMobile === true ? true : ""}
-          timeout="auto"
-          unmountOnExit
-        >
+        <Collapse in={isMobile ? true : ""} timeout="auto" unmountOnExit>
           <div className="home_panel-wrap">
             <FilterPanel
+              industryData={industryData}
               changeHand={handleChange}
               selectedTime={selectedTime}
               selectedPrice={selectedPrice}
@@ -245,10 +244,18 @@ const Home = () => {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <Slide direction="up" in={checked} timeout={400} mountOnEnter unmountOnExit>
+          <Slide
+            direction="up"
+            in={checked}
+            timeout={400}
+            mountOnEnter
+            unmountOnExit
+          >
             <div className="home_panel-wrap second-pannel">
               <FilterPanel
+                isMobile={isMobile}
                 changeHand={handleChange}
+                industryData={industryData}
                 selectedTime={selectedTime}
                 selectedPrice={selectedPrice}
                 selectedExperience={selectedExperience}
