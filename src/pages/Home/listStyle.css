@@ -36,7 +36,7 @@
   color: #ff7070;
   font-weight: 700;
   font-size: 18px;
-  margin-bottom: 5px;
+
 }
 .view-profile {
   width: 100%;
@@ -66,12 +66,12 @@
     font-size: 16px;
   }
   .card-subheader {
-    font-size: 12px;
+    font-size: 10px;
   }
   .card-avatar {
-    width: 45px;
-    height: 45px;
-    margin-left: 5px;
+    width: 50px !important;
+  height: 50px !important;
+ margin-left: 5px !important;   
   }
  
 }

@@ -1,18 +1,11 @@
-import React from 'react'
+import React from "react";
 import Rating from "@material-ui/lab/Rating";
-const Ratings = () => {
+const Ratings = ({ data }) => {
   return (
     <p>
-      <Rating
-        name="half-rating-read"
-        defaultValue={2.5}
-        precision={0.5}
-        readOnly
-        size="small"
-      />
+      <Rating name="read-only" key={data} value={data} readOnly size="small" />
     </p>
+  );
+};
 
-  )
-}
-
-export default Ratings
+export default Ratings;

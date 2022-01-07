@@ -47,10 +47,14 @@ function ListMain({ list, isSelect, isMobile }) {
                         aria-label="recipe"
                       />
                     }
-                    title={<h1 className="card-title" key={_data.title}>{_data.title}</h1>}
+                    title={
+                      <h1 className="card-title" key={_data.title}>
+                        {_data.title}
+                      </h1>
+                    }
                     subheader={
                       <div className="card-subheader">
-                        Enterprenuer | CEO <Ratings />
+                        Enterprenuer | CEO <Ratings data={_data.rating} />
                       </div>
                     }
                   />
@@ -79,7 +83,9 @@ function ListMain({ list, isSelect, isMobile }) {
                     ""
                   )}
 
-                  <p className="card-price" key={_data.price}>INR {_data.price}/hour</p>
+                  <p className="card-price" key={_data.price}>
+                    INR {_data.price}/hour
+                  </p>
                   {isMobile === false ? (
                     <ExpandActions
                       expanded={expanded}
@@ -104,13 +110,20 @@ function ListMain({ list, isSelect, isMobile }) {
                       <span key={_data.domain}>{_data.domain}</span>
                     </div>
 
-                    <h1 className="card-content-h1">Experience</h1>
-                    <TimeLine />
+                    <h1
+                      className="card-content-h1"
+                      style={{ marginBottom: "5px" }}
+                    >
+                      Experience
+                    </h1>
+                    <TimeLine data={_data.experienceData} />
 
                     <div style={{ marginBottom: "10px" }}>
                       <h1 className="card-content-h1">
                         Mentees Mentored :{" "}
-                        <span style={{ color: "black" }} key={_data.mentored}>{_data.mentored}</span>
+                        <span style={{ color: "black" }} key={_data.mentored}>
+                          {_data.mentored}
+                        </span>
                       </h1>
                     </div>
                     <button className="view-profile">View Full Profile</button>
