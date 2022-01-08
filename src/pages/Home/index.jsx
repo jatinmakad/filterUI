@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import EmptyView from "../../components/common/EmptyView";
 import FilterPanel from "../../components/Home/FilterPanel";
 import SearchBar from "../../components/Home/SearchBar";
@@ -101,7 +101,7 @@ const Home = () => {
     if (searchInput) {
       updatedList = updatedList.filter(
         (item) =>
-          item.title.toLowerCase().search(ssearchInput.toLowerCase().trim()) !==
+          item.title.toLowerCase().search(searchInput.toLowerCase().trim()) !==
             -1 ||
           item.domain.toLowerCase().search(searchInput.toLowerCase().trim()) !==
             -1 ||
@@ -112,7 +112,6 @@ const Home = () => {
                 .search(searchInput.toLowerCase().trim()) !== -1
           )
       );
-      console.log(updatedList);
     }
 
     // Time Filter
@@ -177,7 +176,7 @@ const Home = () => {
   useEffect(() => {
     applyFilters();
   }, [searchInput]);
-
+  const containerRef = useRef(null);
   return (
     <div className="home">
       <Header
@@ -217,7 +216,7 @@ const Home = () => {
           )}
         </div>
         {/* Filter Panel */}
-        <Collapse in={isMobile ? true : ""} timeout="auto" unmountOnExit>
+        <Collapse in={isMobile ? true : ""} timeout="auto" mountOnEnter>
           <div className="home_panel-wrap">
             <FilterPanel
               industryData={industryData}
@@ -248,6 +247,7 @@ const Home = () => {
             handleClose();
             handleChange();
           }}
+          ref={containerRef}
           className="modal"
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
@@ -255,9 +255,7 @@ const Home = () => {
           <Slide
             direction="up"
             in={checked}
-            timeout={400}
-            mountOnEnter
-            unmountOnExit
+            container={containerRef.current}
           >
             <div className="home_panel-wrap second-pannel">
               <FilterPanel

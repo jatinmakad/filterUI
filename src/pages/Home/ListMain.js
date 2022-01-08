@@ -21,8 +21,6 @@ function ListMain({ list, isSelect, isMobile }) {
   const [collapse, setCollapse] = useState(0);
   const handleChange = (event, index) => {
     setAge(event.target.value);
-    // console.log(index)
-    // console.log(event.target.value)
   };
   const [expanded, setExpanded] = useState(false);
   const handleExpandClick = (value) => {
@@ -87,7 +85,7 @@ function ListMain({ list, isSelect, isMobile }) {
                   )}
 
                   <p className="card-price" key={_data.price}>
-                    INR {_data.price}/hour
+                    INR {_data.secPrice[0]}/hour
                   </p>
                   <span className="expand-card">
                     <ExpandActions
