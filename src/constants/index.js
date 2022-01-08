@@ -25,7 +25,7 @@ export const dataList = [
     mentored: 10,
     experienceData: [
       {
-        value: "Ceo at microsoft ( 2016 - 2018)",
+        value: "demo Experience",
         label: "Working on different dom...",
       },
       {

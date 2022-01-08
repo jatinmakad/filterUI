@@ -98,15 +98,22 @@ const Home = () => {
     let domainValue;
 
     // Search Filter
-    if (searchInput){
+    if (searchInput) {
       updatedList = updatedList.filter(
         (item) =>
-          item.title.toLowerCase().search(searchInput.toLowerCase().trim()) !==
-          -1 || item.domain.toLowerCase().search(searchInput.toLowerCase().trim()) !==
-          -1 || item.experienceData?.find(_data => _data["value"].search(searchInput.toLowerCase().trim()) !== -1)
+          item.title.toLowerCase().search(ssearchInput.toLowerCase().trim()) !==
+            -1 ||
+          item.domain.toLowerCase().search(searchInput.toLowerCase().trim()) !==
+            -1 ||
+          item.experienceData?.find(
+            (_data) =>
+              _data["value"]
+                .toLowerCase()
+                .search(searchInput.toLowerCase().trim()) !== -1
+          )
       );
-      console.log(updatedList)
-      }
+      console.log(updatedList);
+    }
 
     // Time Filter
     if (selectedTime) {
@@ -165,7 +172,7 @@ const Home = () => {
     );
     setList(updatedList);
     !updatedList.length ? setResultsFound(false) : setResultsFound(true);
-  }
+  };
 
   useEffect(() => {
     applyFilters();
