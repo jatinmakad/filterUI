@@ -7,6 +7,7 @@ import { Avatar } from "@material-ui/core";
 import Icon from "../../images/Avatar.png";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
+import { dataList } from "../../constants";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
@@ -20,6 +21,8 @@ function ListMain({ list, isSelect, isMobile }) {
   const [collapse, setCollapse] = useState(0);
   const handleChange = (event, index) => {
     setAge(event.target.value);
+    // console.log(index)
+    // console.log(event.target.value)
   };
   const [expanded, setExpanded] = useState(false);
   const handleExpandClick = (value) => {
@@ -86,7 +89,7 @@ function ListMain({ list, isSelect, isMobile }) {
                   <p className="card-price" key={_data.price}>
                     INR {_data.price}/hour
                   </p>
-                  {isMobile === false ? (
+                  <span className="expand-card">
                     <ExpandActions
                       expanded={expanded}
                       collapse={collapse}
@@ -94,9 +97,7 @@ function ListMain({ list, isSelect, isMobile }) {
                       handleExpandClick={() => handleExpandClick(index)}
                       index={index}
                     />
-                  ) : (
-                    ""
-                  )}
+                  </span>
                 </div>
 
                 <Collapse

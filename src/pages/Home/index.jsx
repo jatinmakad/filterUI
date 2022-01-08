@@ -55,10 +55,7 @@ const Home = () => {
   }
   useEffect(() => {
     window.addEventListener("resize", update);
-    return () => {
-      window.removeEventListener("resize", update);
-    };
-  }, [windowWidth]);
+  }, []);
   const update = () => {
     setWindowWidth(window.innerWidth);
     setOpen(false);
@@ -79,10 +76,10 @@ const Home = () => {
   const handleChangeMentored = (event, value) => {
     setSelectedMentored(value);
   };
-  const handleDomainChange = (_,value) => {
+  const handleDomainChange = (_, value) => {
     setDomain(value);
   };
-  const handleIndustryChange = (_,value) => setIndustry(value);
+  const handleIndustryChange = (_, value) => setIndustry(value);
   const clearFilter = () => {
     setSelectedExperience([1, 10]);
     setSelectedMentored([1, 10]);
@@ -94,18 +91,22 @@ const Home = () => {
     setList(dataList);
     setResultsFound(true);
   };
+
   const applyFilters = () => {
     let updatedList = dataList;
     let industryValue;
     let domainValue;
+
     // Search Filter
-    if (searchInput) {
+    if (searchInput){
       updatedList = updatedList.filter(
         (item) =>
           item.title.toLowerCase().search(searchInput.toLowerCase().trim()) !==
-          -1
+          -1 || item.domain.toLowerCase().search(searchInput.toLowerCase().trim()) !==
+          -1 || item.experienceData?.find(_data => _data["value"].search(searchInput.toLowerCase().trim()) !== -1)
       );
-    }
+      console.log(updatedList)
+      }
 
     // Time Filter
     if (selectedTime) {
@@ -121,7 +122,7 @@ const Home = () => {
       );
     }
     // Industry Filter
-    if (industry.length){
+    if (industry.length) {
       industryValue = industry.map((s) => s.label);
       updatedList = updatedList.filter((item) =>
         industryValue.includes(item.industry)
@@ -164,7 +165,7 @@ const Home = () => {
     );
     setList(updatedList);
     !updatedList.length ? setResultsFound(false) : setResultsFound(true);
-  };
+  }
 
   useEffect(() => {
     applyFilters();

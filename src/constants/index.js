@@ -272,6 +272,20 @@ export const dataList = [
     domain: "Marketing",
     industry: "Startup",
     experience: 4,
+    experienceData: [
+      {
+        value: "Ceo at microsoft ( 2016 - 2018)",
+        label: "Working on different dom...",
+      },
+      {
+        value: "Director- at Microsoft",
+        label: "Workedd",
+      },
+      {
+        value: "Director- at Microsoft",
+        label: "Workedd",
+      },
+    ],
     mentored: 10,
   },
   {

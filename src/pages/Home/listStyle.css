@@ -26,7 +26,7 @@
   border-radius: 10px;
   width: auto;
 }
-.card-content span{
+.card-content span {
   font-weight: 600;
   margin-left: 5px;
   font-size: 15px;
@@ -36,7 +36,6 @@
   color: #ff7070;
   font-weight: 700;
   font-size: 18px;
-
 }
 .view-profile {
   width: 100%;
@@ -56,7 +55,14 @@
   width: 55px;
   height: 55px;
 }
-
+.expand-card {
+  display: none;
+}
+@media only screen and (max-width: 957px) {
+  .expand-card {
+    display: flex;
+  }
+}
 @media only screen and (max-width: 650px) {
   .card-price {
     padding: 10px 10px;
@@ -70,8 +76,7 @@
   }
   .card-avatar {
     width: 50px !important;
-  height: 50px !important;
- margin-left: 5px !important;   
+    height: 50px !important;
+    margin-left: 5px !important;
   }
- 
 }

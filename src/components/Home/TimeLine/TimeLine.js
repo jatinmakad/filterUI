@@ -32,7 +32,7 @@ const TimeLine = ({ data }) => {
             flexDirection: "column",
           }}
         >
-          {data.slice(0, 2).map((item) => {
+          {data?.slice(0, 2).map((item) => {
             return (
               <div
                 style={{
