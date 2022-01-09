@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
@@ -16,8 +16,26 @@ import TimeLine from "../../components/Home/TimeLine/TimeLine";
 import Ratings from "../../components/common/Ratings";
 import ExpandActions from "../../components/common/ExpandActions";
 import Select from "@material-ui/core/Select";
+
+const data = [
+  {
+    id: 1,
+    value: "15",
+    price: "50",
+  },
+  {
+    id: 2,
+    value: "30",
+    price: "150",
+  },
+  {
+    id: 3,
+    value: "60",
+    price: "100",
+  },
+];
 function ListMain({ list, isSelect, isMobile }) {
-  const [age, setAge] = useState("60 Mins");
+  const [age, setAge] = useState();
   const [collapse, setCollapse] = useState(0);
   const handleChange = (event, index) => {
     setAge(event.target.value);
@@ -31,6 +49,13 @@ function ListMain({ list, isSelect, isMobile }) {
       setCollapse(value);
     }
   };
+  const [demo, setDemo] = useState("");
+  const handel = (val, id) => {
+    console.log(id);
+    setAge(id);
+    // dataList.map((item) => item.time.map((r) => r  !== val ? item : {...item,price:!item.price} ))
+  };
+
   return (
     <Box className="box">
       <Grid container spacing={2} style={{ flexGrow: 1 }}>
@@ -61,32 +86,29 @@ function ListMain({ list, isSelect, isMobile }) {
                   />
 
                   {isSelect ? (
-                    <FormControl style={{ width: "15%" }}>
-                      <InputLabel id="demo-simple-select-label">
-                        Time
-                      </InputLabel>
-                      <Select
-                        labelId="demo-simple-select-label"
-                        value={age}
-                        id={_data.id}
-                        onChange={(e) => handleChange(e, index)}
-                      >
-                        {_data.time.map((item) => {
-                          return (
-                            <MenuItem key={item} value={item}>
-                              {item}
-                            </MenuItem>
-                          );
-                        })}
-                      </Select>
-                    </FormControl>
+                    <select
+                      onChange={(e) => {
+                        setDemo(e.target.value);
+                        handel(e.target.value, _data.id);
+                      }}
+                      className="select-btn"
+                      defaultValue={_data.time[_data.time.length - 1]}
+                    >
+                      {_data.time.map((item) => {
+                        return (
+                          <>
+                            <option value={item}>{item}</option>
+                          </>
+                        );
+                      })}
+                    </select>
                   ) : (
                     ""
                   )}
 
-                  <p className="card-price" key={_data.price}>
-                    INR {_data.secPrice[0]}/hour
-                  </p>
+                  <div className="card-price" id={index}>
+                    INR {_data.price}/hour
+                  </div>
                   <span className="expand-card">
                     <ExpandActions
                       expanded={expanded}

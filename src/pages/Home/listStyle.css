@@ -58,6 +58,11 @@
 .expand-card {
   display: none;
 }
+.select-btn{
+  padding: 4px 6px;
+  border: 2px solid #ff7070;
+  border-radius: 5px;
+}
 @media only screen and (max-width: 957px) {
   .expand-card {
     display: flex;
