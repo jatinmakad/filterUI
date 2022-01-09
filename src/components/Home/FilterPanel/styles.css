@@ -1,15 +1,17 @@
 .label {
   font-weight: 600;
 }
-.input-group {
-  margin-bottom: .8rem;
-}
 .label-range {
   font-size: 15px;
   font-style: normal;
   font-weight: 500;
   line-height: 15px;
   margin-bottom: 2px;
+}
+.filter-main{
+  display: flex;flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 .apply-outer {
   display: flex;
