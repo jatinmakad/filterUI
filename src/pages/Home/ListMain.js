@@ -3,7 +3,7 @@ import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import Collapse from "@material-ui/core/Collapse";
-import { Avatar } from "@material-ui/core";
+import { Avatar, Typography } from "@material-ui/core";
 import Icon from "../../images/Avatar.png";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
@@ -51,9 +51,7 @@ function ListMain({ list, isSelect, isMobile }) {
   };
   const [demo, setDemo] = useState("");
   const handel = (val, id) => {
-    console.log(id);
-    setAge(id);
-    // dataList.map((item) => item.time.map((r) => r  !== val ? item : {...item,price:!item.price} ))
+    dataList.map((item) => (item.id === id ? setAge(val) : ""));
   };
 
   return (
@@ -94,21 +92,26 @@ function ListMain({ list, isSelect, isMobile }) {
                       className="select-btn"
                       defaultValue={_data.time[_data.time.length - 1]}
                     >
-                      {_data.time.map((item) => {
-                        return (
-                          <>
-                            <option value={item}>{item}</option>
-                          </>
-                        );
+                      {_data.time.map((item, index) => {
+                        return <option value={item}>{item}</option>;
                       })}
                     </select>
                   ) : (
                     ""
                   )}
 
-                  <div className="card-price" id={index}>
-                    INR {_data.price}/hour
-                  </div>
+                  {/* {demo ? (
+                    <div className="card-price" key={index}>
+                      INR {_data.secPrice[age]}/hour
+                    </div>
+                  ) : (
+                    <div className="card-price" key={index}>
+                      INR {_data.secPrice[_data.secPrice.length - 1]}/hour
+                    </div>
+                  )} */}
+                   <div className="card-price" key={index}>
+                      INR {_data.price}/hour
+                    </div>
                   <span className="expand-card">
                     <ExpandActions
                       expanded={expanded}

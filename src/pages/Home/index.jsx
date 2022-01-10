@@ -216,8 +216,7 @@ const Home = () => {
           )}
         </div>
         {/* Filter Panel */}
-        <Collapse in={isMobile ? true : ""} timeout="auto" mountOnEnter>
-          <div className="home_panel-wrap">
+          <div className="home_panel-wrap wrap-close">
             <FilterPanel
               industryData={industryData}
               changeHand={handleChange}
@@ -240,7 +239,6 @@ const Home = () => {
               isMobile={isMobile}
             />
           </div>
-        </Collapse>
         <Modal
           open={open}
           onClose={() => {
