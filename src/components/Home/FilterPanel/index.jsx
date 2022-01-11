@@ -32,8 +32,6 @@ const FilterPanel = ({
   handleClose,
   isMobile,
   changeHand,
-  setInputIndustry,
-  inputIndusrty
 }) => {
   const applyFunc = () => {
     handleClose();
@@ -72,7 +70,11 @@ const FilterPanel = ({
       </div>
       <div className="input-group">
         <p className="label-range">Industry</p>
-        <DropIndustry industryData={industryData} values={industry} changesValue={selectIndustry} />
+        <DropIndustry
+          industryData={industryData}
+          values={industry}
+          changesValue={selectIndustry}
+        />
       </div>
       <div className="input-group">
         <p className="label-range">Domain</p>

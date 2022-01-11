@@ -36,10 +36,12 @@ const data = [
 ];
 function ListMain({ list, isSelect, isMobile }) {
   const [age, setAge] = useState();
+  const [hand, sethandel] = useState();
   const [collapse, setCollapse] = useState(0);
   const handleChange = (event, index) => {
     setAge(event.target.value);
   };
+  // console.log(hand,age)
   const [expanded, setExpanded] = useState(false);
   const handleExpandClick = (value) => {
     setExpanded(!expanded);
@@ -50,10 +52,7 @@ function ListMain({ list, isSelect, isMobile }) {
     }
   };
   const [demo, setDemo] = useState("");
-  const handel = (val, id) => {
-    dataList.map((item) => (item.id === id ? setAge(val) : ""));
-  };
-
+  console.log(demo)
   return (
     <Box className="box">
       <Grid container spacing={2} style={{ flexGrow: 1 }}>
@@ -87,7 +86,8 @@ function ListMain({ list, isSelect, isMobile }) {
                     <select
                       onChange={(e) => {
                         setDemo(e.target.value);
-                        handel(e.target.value, _data.id);
+                        setAge(e.target.selectedIndex);
+                        sethandel(_data.id);
                       }}
                       className="select-btn"
                       defaultValue={_data.time[_data.time.length - 1]}
@@ -99,18 +99,8 @@ function ListMain({ list, isSelect, isMobile }) {
                   ) : (
                     ""
                   )}
-
-                  {/* {demo ? (
-                    <div className="card-price" key={index}>
-                      INR {_data.secPrice[age]}/hour
-                    </div>
-                  ) : (
-                    <div className="card-price" key={index}>
-                      INR {_data.secPrice[_data.secPrice.length - 1]}/hour
-                    </div>
-                  )} */}
-                   <div className="card-price" key={index}>
-                      INR {_data.price}/hour
+                    <div className="card-price" key={_data.id}>
+                      INR {_data.id === hand ?_data.secPrice[age] : _data.secPrice[_data.time.length - 1]}/hour
                     </div>
                   <span className="expand-card">
                     <ExpandActions

@@ -6,7 +6,6 @@ import FilterListIcon from "@material-ui/icons/FilterList";
 import { dataList } from "../../constants";
 import ListMain from "./ListMain";
 import "./styles.css";
-import Collapse from "@material-ui/core/Collapse";
 import Modal from "@material-ui/core/Modal";
 import Header from "../../components/Home/Header";
 import Slide from "@material-ui/core/Slide";
