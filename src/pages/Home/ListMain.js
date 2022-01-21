@@ -100,7 +100,8 @@ function ListMain({ list, isSelect, isMobile }) {
                     ""
                   )}
                     <div className="card-price" key={_data.id}>
-                      INR {_data.id === hand ?_data.secPrice[age] : _data.secPrice[_data.time.length - 1]}/hour
+                      {/* INR {_data.id === hand && _data.secPrice[age]}/hour */}
+                      INR {_data.price}/hour
                     </div>
                   <span className="expand-card">
                     <ExpandActions

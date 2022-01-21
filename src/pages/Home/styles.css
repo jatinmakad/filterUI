@@ -43,6 +43,25 @@
   top: 90%;
   right: 5%;
 }
+@media only screen and (max-width: 350px) {
+ .card-avatar{
+   width: 30px !important;
+   height: 30px !important;
+ }
+ .card-title{
+   font-size: 11px !important;
+ }
+ .card-subheader{
+   font-size: 9px !important;
+ }
+ .card-price{
+   padding: 5px 8px !important;
+   font-size: 8px !important;
+ }
+ .expand-card .MuiSvgIcon-root{
+   font-size: 13px !important;
+ }
+}
 @media only screen and (max-width: 650px) {
   .home_list-wrap {
     flex: 1;
@@ -51,7 +70,7 @@
   .home_panel-wrap {
     background: #fff;
     border: none;
-    width: 90% !important;
+    width: 92% !important;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
   }
@@ -67,7 +86,7 @@
   .home_panel-wrap {
     background: #fff;
     border: none;
-    width: 60%;
+    width: 96%;
     position: absolute;
     bottom: 0;
     margin-top: 90px;
